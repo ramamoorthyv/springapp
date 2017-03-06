@@ -10,6 +10,18 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 <context:component-scan base-package="com.lib"></context:component-scan>
 
+<bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+    <property name="url" value="jdbc:mysql://localhost:3306/spring_mvc" />
+    <property name="username" value="root" />
+    <property name="password" value="password123456" />
+</bean>
+
+<bean id = "JdbcUserDao" 
+      class = "com.lib.JdbcUserDao">
+      <property name = "dataSource" ref = "dataSource" />    
+   </bean>
+ 
 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 <property name="prefix" value="/WEB-INF/jsp/"></property>
 <property name="suffix" value=".jsp"></property>
